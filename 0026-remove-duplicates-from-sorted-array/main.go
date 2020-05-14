@@ -2,15 +2,15 @@ package main
 
 func removeDuplicates(nums []int) int {
 	last := len(nums) - 1
-	current, result := 0, 0
-	for current <= last {
-		if current == last || nums[current] != nums[current+1] {
-			nums[result], nums[current] = nums[current], nums[result]
-			result++
+	readPointer, writePointer := 0, 0
+	for readPointer <= last {
+		if readPointer == last || nums[readPointer] != nums[readPointer+1] {
+			nums[writePointer], nums[readPointer] = nums[readPointer], nums[writePointer]
+			writePointer++
 		}
 
-		current++
+		readPointer++
 	}
 
-	return result
+	return writePointer
 }
