@@ -15,14 +15,14 @@ var tests = []struct {
 	{[]int{-3, -3, -2, 1, 1, 1}, []int{1, 1, 1, 4, 9, 9}},
 }
 
-func TestSortedSquaresInPlace(t *testing.T) {
+func TestSortedSquares(t *testing.T) {
 	for _, test := range tests {
 		A := make([]int, len(test.A))
 		copy(A, test.A)
-		got := sortedSquaresInPlace(A)
+		got := sortedSquares(A)
 		for i, n := range test.want {
 			if n != got[i] {
-				t.Errorf("sortedSquaresInPlace(%v) = %v; want %v", test.A, got, test.want)
+				t.Errorf("sortedSquares(%v) = %v; want %v", test.A, got, test.want)
 				break
 			}
 		}
@@ -43,11 +43,11 @@ func TestSortedSquaresExtraMemory(t *testing.T) {
 	}
 }
 
-func BenchmarkSortedSquaresInPlace(b *testing.B) {
+func BenchmarkSortedSquares(b *testing.B) {
 	A := make([]int, len(tests[0].A))
 	copy(A, tests[0].A)
 	for i := 0; i < b.N; i++ {
-		sortedSquaresInPlace(A)
+		sortedSquares(A)
 	}
 }
 
